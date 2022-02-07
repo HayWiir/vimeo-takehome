@@ -1,0 +1,5 @@
+*.pyc
+*.idea*
+.vscode*
+*.DS_STORE
+src/loader.egg-info/*
