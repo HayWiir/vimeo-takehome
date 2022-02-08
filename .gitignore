@@ -3,3 +3,4 @@
 .vscode*
 *.DS_STORE
 src/loader.egg-info/*
+src/search/tmp.py

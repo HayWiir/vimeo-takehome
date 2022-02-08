@@ -3,7 +3,7 @@ from flask import Flask, jsonify, request
 import requests
 from elasticsearch import Elasticsearch
 
-elastic_client = Elasticsearch(['http://elasticsearch:9200'])
+elastic_client = Elasticsearch(['http://elasticsearch:9200'], retry_on_timeout=True, request_timeout=30)
 app = Flask(__name__)
 
 @app.route('/status')
