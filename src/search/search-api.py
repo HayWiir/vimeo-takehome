@@ -39,7 +39,7 @@ def search():
                 },
             ],
             "filter": [
-                {"match": {"list": list_option}},
+                {"match_phrase": {"list": list_option}},
             ],
         }
     }
@@ -57,7 +57,10 @@ def search():
 
         for hit in hits_list:
             ret_results.append(
-                {"title": hit["_source"]["title"], "link": hit["_source"]["link"]}
+                {
+                    "title": hit["_source"]["title"],
+                    "link": hit["_source"]["link"],
+                }
             )
 
         final = {"number_of_results": len(hits_list), "results": ret_results}
