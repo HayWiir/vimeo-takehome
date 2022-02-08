@@ -4,7 +4,7 @@ version: '3'
 services:
   elasticsearch:
     container_name: elasticsearch
-    image: elasticsearch:7.4.2
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.0
     ports:
     - "9200:9200"
     environment:
@@ -14,6 +14,7 @@ services:
     volumes:
       - ./snapshot:/snapshot
       - ./conf/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      
   loader:
     container_name: loader
     build:
@@ -29,3 +30,17 @@ services:
       - ./src:/src
       - ./snapshot:/snapshot
       - ./serialized_docs:/serialized_docs
+
+  search-api:
+    build:
+      dockerfile: Dockerfile.loader
+      context: .
+    depends_on:
+      - elasticsearch
+    volumes: 
+        - ./src:/src/
+    ports: 
+        - "9250:9250"
+    environment: 
+        PORT: 9250
+        FLASK_DEBUG: 1
