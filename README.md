@@ -1,4 +1,6 @@
-## Task
+## Intern-Task
+
+This project was undertaken as part of Vimeo's recruitment process
 
 Create an application that allows users to search over the top wikipedia pages as defined by 
 [this wikipedia article](https://en.wikipedia.org/wiki/Wikipedia:Multiyear_ranking_of_most_viewed_pages). 
